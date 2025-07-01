@@ -1,0 +1,27 @@
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: mongodb
+    namespace: mongo-db
+    chart: bitnami/mongodb
+    version: 14.12.3
+    values:
+      - architecture: standalone
+        metrics:
+          enabled: true
+        auth:
+          enabled: true
+          rootUsername: "admin"
+          rootPassword: "F9u!xek2qL$e"
+          usernames:
+            - "user"
+          passwords:
+            - "Rt73p@zVmK"
+          databases:
+            - "mydb"
+        service:
+          type: LoadBalancer
+          loadBalancerIPs:
+            - 127.0.0.1

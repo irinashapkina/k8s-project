@@ -1,0 +1,29 @@
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: minio
+    namespace: minio
+    chart: bitnami/minio
+    version: 13.6.3
+    values:
+      - auth:
+          rootUser: minioadmin
+          rootPassword: SuperSecret123!
+        metrics:
+          enabled: true
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          hostname: s3.local
+          path: /
+          pathType: ImplementationSpecific
+          selfSigned: true
+        consoleIngress:
+          enabled: true
+          ingressClassName: nginx
+          hostname: minio.local
+          path: /
+          pathType: ImplementationSpecific
+          selfSigned: true

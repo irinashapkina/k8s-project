@@ -1,0 +1,20 @@
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: redis
+    namespace: redis
+    chart: bitnami/redis
+    version: 19.5.2
+    values:
+      - architecture: standalone
+        auth:
+          enabled: true
+          password: mysecurepassword
+        metrics:
+          enabled: true
+        master:
+          service:
+            type: LoadBalancer
+            loadBalancerIP: 127.0.0.1
